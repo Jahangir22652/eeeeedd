@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>API</title>
+<style>
+  body { background:#0B0713; color:#B66DFF; font-family:'Segoe UI', sans-serif; padding:40px; }
+  h1 { letter-spacing:3px; }
+  .card { background:#14091F; border:1px solid #2A1D44; border-radius:10px; padding:20px; margin:16px 0; }
+  pre { background:#09060F; padding:16px; border-radius:8px; color:#5CFFB0; overflow-x:auto; }
+  a { color:#B66DFF; text-decoration:none; }
+  a:hover { color:#D9B3FF; }
+</style>
+</head>
+<body>
+<h1>API ENDPOINTS</h1>
+<div class="card">
+  <h3>version.json</h3>
+  <a href="/version.json" target="_blank">/version.json</a>
+  <pre id="v">loading...</pre>
+</div>
+<script>
+fetch('/version.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(j => document.getElementById('v').textContent = JSON.stringify(j, null, 2))
+  .catch(e => document.getElementById('v').textContent = 'error: ' + e);
+</script>
+</body>
+</html>
